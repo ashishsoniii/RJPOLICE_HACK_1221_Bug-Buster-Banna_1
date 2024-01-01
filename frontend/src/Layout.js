@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "./Navbar";
 import HomePage from "./HomePage";
 import { Route, Routes } from "react-router-dom";
+import PolicePortal from "./policePortalsRoutes/PolicePortal";
+import FeedbackPortal from "./policePortalsRoutes/feedback/FeedbackPortal";
+import FirPortal from "./policePortalsRoutes/fir/FirPortal";
+import FeedbackForm1 from "./policePortalsRoutes/feedback/FeedbackForm1";
 
 function Layout() {
   return (
@@ -27,6 +31,10 @@ function Layout() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/police" element={<PolicePortal/>} />
+        <Route path="/police/feedback" element={<FeedbackPortal/>} />
+        <Route path="/police/feedback/FeedbackForm1" element={<FeedbackForm1/>} />
+        <Route path="/police/fir" element={<FirPortal/>} />
       </Routes>
     </div>
   );

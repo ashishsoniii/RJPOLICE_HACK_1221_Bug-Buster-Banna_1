@@ -94,8 +94,8 @@ function Navbar() {
             ></circle>
           </NavbarItem>
         </Link>
-        <Link to="/">
-          <NavbarItem name="Feedback">
+        <Link to="/police">
+          <NavbarItem name="Police Portal">
             <line
               fill="none"
               stroke="currentColor"
