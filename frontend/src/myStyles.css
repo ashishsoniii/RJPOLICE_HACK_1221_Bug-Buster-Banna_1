@@ -73,7 +73,7 @@ body {
 
 .homepage-main-area {
     display: grid;
-    margin-left: 15%;
+    margin-left: 5%;
     grid-template-columns: auto 470px 320px auto;
     grid-gap: 65px;
     height: 100vh;

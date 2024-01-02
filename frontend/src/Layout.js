@@ -28,14 +28,22 @@ function Layout() {
         </h1>
       </div>
 
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/police" element={<PolicePortal/>} />
-        <Route path="/police/feedback" element={<FeedbackPortal/>} />
-        <Route path="/police/feedback/FeedbackForm1" element={<FeedbackForm1/>} />
-        <Route path="/police/fir" element={<FirPortal/>} />
-      </Routes>
+      <div className="homepage-main-areaa">
+        <div className="home-page-post-areaa">
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/police" element={<PolicePortal />} />
+            <Route path="/police/feedback" element={<FeedbackPortal />} />
+            <Route
+              path="/police/feedback/FeedbackForm1"
+              element={<FeedbackForm1 />}
+            />
+
+            <Route path="/police/fir" element={<FirPortal />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
