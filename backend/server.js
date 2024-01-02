@@ -7,6 +7,7 @@ const userRoute = require("./routes/userRoute");
 const errorHandler = require("./middleWares/errorMiddleware");
 const cookieParser = require("cookie-parser");
 const app = express();
+const adminRoutes = require('./routes/adminRoute');
 
 const feedbackRoute = require("./routes/feedbackRoutes");
 
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:3001"],
     credentials: true,
   })
 );
@@ -25,6 +26,8 @@ app.use(
 // Routes Middleware
 app.use("/api/users", userRoute);
 app.use("/api/feedback", feedbackRoute);
+app.use('/admin', adminRoutes);
+
 
 // Routes
 app.get("/", (req, res) => {
