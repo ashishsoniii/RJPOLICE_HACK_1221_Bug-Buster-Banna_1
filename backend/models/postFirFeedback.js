@@ -8,6 +8,7 @@ const postFirFeedbackSchema = new mongoose.Schema({
   name: String,
   address: String,
   city: String,
+  pinCode: Number,
   email: String,
   policeDistrict: String,
   policeStation: String,
