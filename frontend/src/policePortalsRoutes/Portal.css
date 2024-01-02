@@ -79,22 +79,39 @@
   */
 
 
-  .homepage-main-areaa{
+.homepage-main-areaa {
     margin-left: 10rem;
 }
 
-.homepage-main-areaa-form{
-    
+.homepage-main-areaa-form {
+
     margin-left: 13rem;
-    margin-top: 4rem ;
-  }
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
 
 
-  @media all and (max-width: 1420px) {
-    .homepage-main-areaa{
+@media all and (max-width: 1420px) {
+    .homepage-main-areaa-form {
+
+        margin-left: 4rem;
+        margin-top: 4rem;
+    }
+
+    .homepage-main-areaa {
         margin-left: 3rem;
-      }
-    
+    }
+
 
 }
 
+@media all and (max-width: 772px) {
+    .homepage-main-areaa-form {
+
+        margin-left: -2rem;
+        margin-top: 4rem;
+    }
+
+
+
+}
