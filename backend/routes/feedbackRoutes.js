@@ -7,69 +7,70 @@ const PostFirFeedback = require("../models/postFirFeedback");
 // Fill Feedback
 // routes/feedbackRoutes.js
 router.post("/fillFeedback", async (req, res) => {
-    try {
-      const {
-        firNumber,
-        mobile,
-        name,
-        address,
-        city,
-        pinCode,
-        email,
-        policeDistrict,
-        policeStation,
-        rating,
-        details,
-        externalFill,
-        policeStationRating,
-        responseTimeRating,
-        problemResolutionRating,
-        accessibilityRating,
-        followUpProcessRating,
-        suggestionsImprovements,
-        safetyPerception,
-      } = req.body;
-  
-      // Check if the FIR number is unique
-      const existingFeedback = await Feedback.findOne({ firNumber });
-      if (existingFeedback) {
-        return res.status(400).json({ message: "Feedback with the same FIR number already exists." });
-      }
-  
-      const feedback = new Feedback({
-        firNumber,
-        mobile,
-        name,
-        address,
-        city,
-        pinCode,
-        email,
-        policeDistrict,
-        policeStation,
-        rating,
-        details,
-        externalFill,
-        policeStationRating,
-        responseTimeRating,
-        problemResolutionRating,
-        accessibilityRating,
-        followUpProcessRating,
-        suggestionsImprovements,
-        safetyPerception,
-      });
-  
-      await feedback.save();
-  
-      // Send FIR number back to frontend
-      res
-        .status(201)
-        .json({ message: "Feedback submitted successfully!", firNumber });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal Server Error" });
+  try {
+    const {
+      firNumber,
+      mobile,
+      name,
+      address,
+      city,
+      pinCode,
+      email,
+      policeDistrict,
+      policeStation,
+      rating,
+      details,
+      externalFill,
+      policeStationRating,
+      responseTimeRating,
+      problemResolutionRating,
+      accessibilityRating,
+      followUpProcessRating,
+      suggestionsImprovements,
+      safetyPerception,
+    } = req.body;
+
+    // Check if the FIR number is unique
+    const existingFeedback = await Feedback.findOne({ firNumber });
+    if (existingFeedback) {
+      return res
+        .status(400)
+        .json({ message: "Feedback with the same FIR number already exists." });
     }
-  });
-  
+
+    const feedback = new Feedback({
+      firNumber,
+      mobile,
+      name,
+      address,
+      city,
+      pinCode,
+      email,
+      policeDistrict,
+      policeStation,
+      rating,
+      details,
+      externalFill,
+      policeStationRating,
+      responseTimeRating,
+      problemResolutionRating,
+      accessibilityRating,
+      followUpProcessRating,
+      suggestionsImprovements,
+      safetyPerception,
+    });
+
+    await feedback.save();
+
+    // Send FIR number back to frontend
+    res
+      .status(201)
+      .json({ message: "Feedback submitted successfully!", firNumber });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 // Display All Submitted Feedback
 router.get("/allFeedback", async (req, res) => {
@@ -255,6 +256,18 @@ router.get("/postFirFeedbackByMobile/:mobile", async (req, res) => {
     }
 
     res.status(200).json(postFeedback);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/totalFeedbacksCount", async (req, res) => {
+  try {
+    const postFeedbackCount = await PostFirFeedback.countDocuments();
+    const feedbackCount = await Feedback.countDocuments();
+
+    res.status(200).json({postFeedbackCount, feedbackCount});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
