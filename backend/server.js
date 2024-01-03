@@ -10,6 +10,7 @@ const app = express();
 const adminRoutes = require('./routes/adminRoute');
 
 const feedbackRoute = require("./routes/feedbackRoutes");
+const firRoutes=require("./routes/firRoutes");
 
 // Middlewares
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use("/api/users", userRoute);
 app.use("/api/feedback", feedbackRoute);
 app.use('/admin', adminRoutes);
 
+app.use("/api/efir",firRoutes);
 
 // Routes
 app.get("/", (req, res) => {
