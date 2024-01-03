@@ -7,8 +7,8 @@ function FeedbackOptions() {
     <>
       <div className="cards-list">
         <Cards title="FIR Feedback" link="./FeedbackForm1" />
-        <Cards title="Case Solved Feedback" link="./fir" />
-        <Cards title="Police Station Feedback" link="./fir" />
+        <Cards title="Case Solved Feedback" link="./CaseSolvedFeedback" />
+        <Cards title="Police Station Feedback" link="./PoliceStationFeedback" />
       </div>
     </>
   );

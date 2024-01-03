@@ -6,7 +6,7 @@ function FeedbackPortal() {
   return (
     <div className="homepage-main-areaa">
       <div className="home-page-post-areaa">
-     <FeedbackOptions/>
+        <FeedbackOptions />
       </div>
     </div>
   );

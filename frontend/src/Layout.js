@@ -6,6 +6,10 @@ import PolicePortal from "./policePortalsRoutes/PolicePortal";
 import FeedbackPortal from "./policePortalsRoutes/feedback/FeedbackPortal";
 import FirPortal from "./policePortalsRoutes/fir/FirPortal";
 import FeedbackForm1 from "./policePortalsRoutes/feedback/FeedbackForm1";
+import CaseSolvedFeedback from "./policePortalsRoutes/feedback/CaseSolvedFeedback";
+import PoliceStationFeedback from "./policePortalsRoutes/feedback/PoliceStationFeedback";
+import RaiseFir from "./policePortalsRoutes/fir/RaiseFir";
+import TrackFir from "./policePortalsRoutes/fir/TrackFir";
 
 function Layout() {
   return (
@@ -39,8 +43,17 @@ function Layout() {
               path="/police/feedback/FeedbackForm1"
               element={<FeedbackForm1 />}
             />
-
+            <Route 
+              path="/police/feedback/CaseSolvedFeedback"
+              element={<CaseSolvedFeedback/>}
+            />
+            <Route
+              path="/police/feedback/PoliceStationFeedback"
+              element={<PoliceStationFeedback/>}
+            />
             <Route path="/police/fir" element={<FirPortal />} />
+            <Route path="/police/fir/RaiseFir" element={<RaiseFir/>} />
+            <Route path="/police/fir/TrackFir" element={<TrackFir/>}/>
           </Routes>
         </div>
       </div>

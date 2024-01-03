@@ -19,14 +19,14 @@ export default function FeedbackForm() {
   const [email, setEmail] = useState("");
   const [policeDistrict, setPoliceDistrict] = useState("");
   const [policeStation, setPoliceStation] = useState("");
-  const [rating, setRating] = useState("1");
+  const [rating, setRating] = useState("3");
   const [details, setDetails] = useState("");
   const [externalFill, setExternalFill] = useState(false);
   const [policeStationRating, setPoliceStationRating] = useState({
     higenic: "3",
-    behavior: "1",
+    behavior: "3",
     easeOfProcess: "3",
-    overall: "1",
+    overall: "3",
   });
   const [responseTimeRating, setResponseTimeRating] = useState("1");
   const [problemResolutionRating, setProblemResolutionRating] = useState("1");
@@ -47,7 +47,7 @@ export default function FeedbackForm() {
         name,
         address,
         city,
-        pinCode,
+        pinCode, 
         email,
         policeDistrict,
         policeStation,
@@ -89,8 +89,8 @@ export default function FeedbackForm() {
           boxShadow: 3,
           justifyContent: "center",
           display: "flex",
-          flexDirection:"column",
-          alignItems:"center",
+          flexDirection: "column",
+          alignItems: "center",
 
           p: 4,
           borderRadius: 3,
@@ -102,20 +102,20 @@ export default function FeedbackForm() {
         autoComplete="off"
       >
         <div
-                style={{
-          "& .MuiTextField-root": { mb: 3, flexBasis: "48%" },
-          boxShadow: 3,
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
+          style={{
+            "& .MuiTextField-root": { mb: 3, flexBasis: "48%" },
+            boxShadow: 3,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
 
-          p: 4,
-          borderRadius: 3,
-          textAlign: "center",
-          maxWidth: 800,
-          mx: "auto",
-        }}
->
+            p: 4,
+            borderRadius: 3,
+            textAlign: "center",
+            maxWidth: 800,
+            mx: "auto",
+          }}
+        >
           <TextField
             required
             id="outlined-required"
@@ -230,7 +230,7 @@ export default function FeedbackForm() {
 
             <div>
               <FormControl component="fieldset" sx={{ mb: 2 }}>
-                <FormLabel component="legend">Higenic rating</FormLabel>
+                <FormLabel component="legend">Hygiene rating</FormLabel>
 
                 <RadioGroup
                   row
