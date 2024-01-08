@@ -63,7 +63,7 @@ function PollPortal() {
               }
             }
           >
-            <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            <Typography variant="h4" sx={{ fontWeight: "bold", fontSize: {xs: "1rem", sm: "1rem", md: "1.2rem", lg: "1.4rem", xl: "2rem"} }}>
               {accordion.heading}
             </Typography>
           </AccordionSummary>
