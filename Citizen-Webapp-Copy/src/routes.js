@@ -4,6 +4,7 @@ import Tables from "layouts/tables";
 import Fir from "layouts/fir";
 import Feedback from "layouts/feedback";
 import Billing from "layouts/billing";
+import Poll from "layouts/poll";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -38,7 +39,14 @@ const routes = [
     route: "/fir",
     component: <Fir />,
   },
-
+  {
+    type: "collapse",
+    name: "Feedback",
+    key: "feedback",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/feedback",
+    component: <Feedback />,
+  },
   {
     type: "collapse",
     name: "Feedback Analysis",
@@ -46,6 +54,14 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
     component: <Billing />,
+  },
+  {
+    type: "collapse",
+    name: "Poll",
+    key: "poll",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/poll",
+    component: <Poll />,
   },
   {
     type: "collapse",
@@ -63,14 +79,7 @@ const routes = [
     route: "/profile",
     component: <Profile />,
   },
-  {
-    type: "collapse",
-    name: "Feedback",
-    key: "Feedbackk",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/feedbackk",
-    component: <Feedback />,
-  },
+
   // {
   //   type: "collapse",
   //   name: "Sign In",
