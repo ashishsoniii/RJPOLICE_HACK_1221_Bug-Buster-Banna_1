@@ -20,7 +20,6 @@ const feedbackSchema = new mongoose.Schema({
     easeOfProcess: { type: Number, min: 1, max: 5 },
     overall: { type: Number, min: 1, max: 5 },
   },
-  // ... other fields
   createdAt: { type: Date, default: Date.now },
 });
 

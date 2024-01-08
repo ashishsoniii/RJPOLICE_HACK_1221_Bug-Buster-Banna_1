@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import big_logo from "./photos/Instagram_logo.svg.png";
 import small_logo from "./photos/87390.png";
@@ -7,10 +7,14 @@ import test_pp_icon from "./photos/1.jpg";
 import navbar_icon from "./photos/navigation-bar-icon-20.jpg";
 import NavbarItem from "./NavbarItem";
 import { Link } from "react-router-dom";
+import ChatbotPopup from "./chatbot/ChatbotPopup";
 
 function Navbar() {
   const largePage = useMediaQuery({ query: "(min-width: 1420px)" });
   const middlePage = useMediaQuery({ query: "(max-width: 1420px)" });
+
+  
+
   return (
     <div>
       <div className="instagram-logo">
@@ -184,7 +188,8 @@ function Navbar() {
                 </NavbarItem></Link>
                     */}
 
-        <Link to="/">
+        {/* Chatbot thingy starts here */}
+        <Link to="/chatbot">
           <div
             className="navbar-mobile-custom"
             style={{ position: "absolute", bottom: "50px" }}
@@ -193,6 +198,8 @@ function Navbar() {
             AI Chatbot
           </div>
         </Link>
+        {/* Chatbot thingy ends here */}
+
       </div>
     </div>
   );

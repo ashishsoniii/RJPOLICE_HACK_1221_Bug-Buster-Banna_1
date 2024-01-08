@@ -10,6 +10,7 @@ import CaseSolvedFeedback from "./policePortalsRoutes/feedback/CaseSolvedFeedbac
 import PoliceStationFeedback from "./policePortalsRoutes/feedback/PoliceStationFeedback";
 import RaiseFir from "./policePortalsRoutes/fir/RaiseFir";
 import TrackFir from "./policePortalsRoutes/fir/TrackFir";
+import ChatbotPopup from "./chatbot/ChatbotPopup";
 
 function Layout() {
   return (
@@ -54,6 +55,7 @@ function Layout() {
             <Route path="/police/fir" element={<FirPortal />} />
             <Route path="/police/fir/RaiseFir" element={<RaiseFir/>} />
             <Route path="/police/fir/TrackFir" element={<TrackFir/>}/>
+            <Route path="/chatbot" element={<ChatbotPopup/>}/>
           </Routes>
         </div>
       </div>
