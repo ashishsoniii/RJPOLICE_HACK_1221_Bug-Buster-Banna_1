@@ -7,10 +7,11 @@ const userRoute = require("./routes/userRoute");
 const errorHandler = require("./middleWares/errorMiddleware");
 const cookieParser = require("cookie-parser");
 const app = express();
-const adminRoutes = require('./routes/adminRoute');
+const adminRoutes = require("./routes/adminRoute");
 
 const feedbackRoute = require("./routes/feedbackRoutes");
-const firRoutes=require("./routes/firRoutes");
+const firRoutes = require("./routes/firRoutes");
+const pollRoutes = require("./routes/pollRoutes");
 
 // Middlewares
 app.use(express.json());
@@ -27,9 +28,11 @@ app.use(
 // Routes Middleware
 app.use("/api/users", userRoute);
 app.use("/api/feedback", feedbackRoute);
-app.use('/admin', adminRoutes);
+app.use("/admin", adminRoutes);
 
-app.use("/api/efir",firRoutes);
+app.use("/api/efir", firRoutes);
+
+app.use("/api/poll", pollRoutes);
 
 // Routes
 app.get("/", (req, res) => {
