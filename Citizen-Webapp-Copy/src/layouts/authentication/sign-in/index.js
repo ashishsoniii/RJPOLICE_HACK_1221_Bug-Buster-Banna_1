@@ -30,9 +30,9 @@ function Basic({ setIsLoggedIn, isLoggedIn }) {
 
   const handleSignIn = async () => {
     try {
-      const apiUrl = "http://localhost:5000/admin/login"; // Replace with your actual login API endpoint
+      const apiUrl = "http://localhost:5000/api/users/login"; // Replace with your actual login API endpoint
       const signInData = {
-        username,
+        userName: username,
         password,
       };
       const response = await axios.post(apiUrl, signInData);
@@ -70,7 +70,12 @@ function Basic({ setIsLoggedIn, isLoggedIn }) {
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
             Sign in
           </MDTypography>
-          <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
+          <Grid
+            container
+            spacing={3}
+            justifyContent="center"
+            sx={{ mt: 1, mb: 2 }}
+          >
             {/* Omitted for brevity */}
           </Grid>
         </MDBox>
@@ -107,7 +112,12 @@ function Basic({ setIsLoggedIn, isLoggedIn }) {
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth onClick={handleSignIn}>
+              <MDButton
+                variant="gradient"
+                color="info"
+                fullWidth
+                onClick={handleSignIn}
+              >
                 Sign in
               </MDButton>
             </MDBox>
