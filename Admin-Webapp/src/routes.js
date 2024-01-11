@@ -9,6 +9,7 @@ import SignUp from "layouts/authentication/sign-up";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import Poll from "layouts/poll";
 
 const routes = [
   {
@@ -34,6 +35,14 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
     component: <Billing />,
+  },
+  {
+    type: "collapse",
+    name: "Poll",
+    key: "poll",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/poll",
+    component: <Poll />,
   },
   // {
   //   type: "collapse",
