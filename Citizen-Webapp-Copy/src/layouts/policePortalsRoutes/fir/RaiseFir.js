@@ -60,183 +60,187 @@ function RaiseFir() {
     };
 
     return (
-        <div className="feedback-form homepage-main-areaa-form">
-            <Box
-                component="form"
-                sx={{
-                    "& .MuiTextField-root": { mb: 3, flexBasis: "48%" },
-                    boxShadow: 3,
-                    justifyContent: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-
-                    p: 4,
-                    borderRadius: 3,
-                    textAlign: "center",
-                    maxWidth: 1050,
-                    mx: "auto",
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <div
-                    style={{
+        <div style={{display:'flex',alignItems:'center',alignContent:"center"}}>
+            <div className="feedback-form homepage-main-areaa-form" >
+                <Box
+                    component="form"
+                    sx={{
                         "& .MuiTextField-root": { mb: 3, flexBasis: "48%" },
                         boxShadow: 3,
+                        justifyContent: "center",
                         display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "space-between",
+                        flexDirection: "column",
+                        alignItems: "center",
 
                         p: 4,
                         borderRadius: 3,
                         textAlign: "center",
-                        maxWidth: 800,
+                        maxWidth: 1050,
                         mx: "auto",
+
+                        justifySelf:'center',
                     }}
+                    noValidate
+                    autoComplete="off"
                 >
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Name"
-                        placeholder="Enter your name"
-                        value={complainant.name}
-                        onChange={(e) => setComplainant((prevValue) => ({
-                            ...prevValue,
-                            name: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Mobile"
-                        placeholder="Enter your mobile"
-                        value={complainant.contactNumber}
-                        onChange={(e) => setComplainant((prevValue) => ({
-                            ...prevValue,
-                            contactNumber: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Email"
-                        placeholder="Enter your email"
-                        value={complainant.email}
-                        onChange={(e) => setComplainant((prevValue) => ({
-                            ...prevValue,
-                            email: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Address"
-                        placeholder="Enter your address"
-                        value={complainant.address}
-                        onChange={(e) => setComplainant((prevValue) => ({
-                            ...prevValue,
-                            address: e.target.value,
-                        }))}
-                    />
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">Select incident category</FormLabel>
-                        <RadioGroup
-                            row
-                            aria-label="incident category"
-                            name="incident category"
-                            value={incidentDetails.category}
+                    <div
+                        style={{
+                            "& .MuiTextField-root": { mb: 3, flexBasis: "48%" },
+                            boxShadow: 3,
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-between",
+
+                            p: 4,
+                            borderRadius: 3,
+                            textAlign: "center",
+                            maxWidth: 800,
+                            mx: "auto",
+                        }}
+                    >
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Name"
+                            placeholder="Enter your name"
+                            value={complainant.name}
+                            onChange={(e) => setComplainant((prevValue) => ({
+                                ...prevValue,
+                                name: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Mobile"
+                            placeholder="Enter your mobile"
+                            value={complainant.contactNumber}
+                            onChange={(e) => setComplainant((prevValue) => ({
+                                ...prevValue,
+                                contactNumber: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Email"
+                            placeholder="Enter your email"
+                            value={complainant.email}
+                            onChange={(e) => setComplainant((prevValue) => ({
+                                ...prevValue,
+                                email: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Address"
+                            placeholder="Enter your address"
+                            value={complainant.address}
+                            onChange={(e) => setComplainant((prevValue) => ({
+                                ...prevValue,
+                                address: e.target.value,
+                            }))}
+                        />
+                        <FormControl component="fieldset">
+                            <FormLabel component="legend">Select incident category</FormLabel>
+                            <RadioGroup
+                                row
+                                aria-label="incident category"
+                                name="incident category"
+                                value={incidentDetails.category}
+                                onChange={(e) => setIncidentDetails((prevValue) => ({
+                                    ...prevValue,
+                                    category: e.target.value,
+                                }))}
+                            >
+                                <FormControlLabel value="assault" control={<Radio />} label="Assault" />
+                                <FormControlLabel value="theft" control={<Radio />} label="Theft" />
+                                <FormControlLabel value="fraud" control={<Radio />} label="Fraud" />
+                                <FormControlLabel value="cybercrime" control={<Radio />} label="Cybercrime" />
+                                <FormControlLabel value="violence" control={<Radio />} label="Violence" />
+                                <FormControlLabel value="missing" control={<Radio />} label="Missing" />
+                                <FormControlLabel value="substance abuse" control={<Radio />} label="Substance Abuse" />
+
+                            </RadioGroup>
+                        </FormControl>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Incident Location"
+                            placeholder="Enter Location of Incident"
+                            value={incidentDetails.location}
                             onChange={(e) => setIncidentDetails((prevValue) => ({
                                 ...prevValue,
-                                category: e.target.value,
+                                location: e.target.value,
                             }))}
-                        >
-                            <FormControlLabel value="assault" control={<Radio />} label="Assault" />
-                            <FormControlLabel value="theft" control={<Radio />} label="Theft" />
-                            <FormControlLabel value="fraud" control={<Radio />} label="Fraud" />
-                            <FormControlLabel value="cybercrime" control={<Radio />} label="Cybercrime" />
-                            <FormControlLabel value="violence" control={<Radio />} label="Violence" />
-                            <FormControlLabel value="missing" control={<Radio />} label="Missing" />
-                            <FormControlLabel value="substance abuse" control={<Radio />} label="Substance Abuse" />
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Incident Description"
+                            placeholder="Describe the Incident"
+                            value={incidentDetails.description}
+                            onChange={(e) => setIncidentDetails((prevValue) => ({
+                                ...prevValue,
+                                description: e.target.value,
+                            }))}
+                        />
 
-                        </RadioGroup>
-                    </FormControl>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Incident Location"
-                        placeholder="Enter Location of Incident"
-                        value={incidentDetails.location}
-                        onChange={(e) => setIncidentDetails((prevValue) => ({
-                            ...prevValue,
-                            location: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Incident Description"
-                        placeholder="Describe the Incident"
-                        value={incidentDetails.description}
-                        onChange={(e) => setIncidentDetails((prevValue) => ({
-                            ...prevValue,
-                            description: e.target.value,
-                        }))}
-                    />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Accused Name"
+                            placeholder="Name of accused"
+                            value={accused.name}
+                            onChange={(e) => setAccused((prevValue) => ({
+                                ...prevValue,
+                                name: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Accused Address"
+                            placeholder="Address of accused"
+                            value={accused.address}
+                            onChange={(e) => setAccused((prevValue) => ({
+                                ...prevValue,
+                                address: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Accused Mobile"
+                            placeholder="Mobile of accused"
+                            value={accused.contactNumber}
+                            onChange={(e) => setAccused((prevValue) => ({
+                                ...prevValue,
+                                contactNumber: e.target.value,
+                            }))}
+                        />
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Accused Description"
+                            placeholder="Description of accused"
+                            value={accused.description}
+                            onChange={(e) => setAccused((prevValue) => ({
+                                ...prevValue,
+                                description: e.target.value,
+                            }))}
+                        />
 
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Accused Name"
-                        placeholder="Name of accused"
-                        value={accused.name}
-                        onChange={(e) => setAccused((prevValue) => ({
-                            ...prevValue,
-                            name: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Accused Address"
-                        placeholder="Address of accused"
-                        value={accused.address}
-                        onChange={(e) => setAccused((prevValue) => ({
-                            ...prevValue,
-                            address: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Accused Mobile"
-                        placeholder="Mobile of accused"
-                        value={accused.contactNumber}
-                        onChange={(e) => setAccused((prevValue) => ({
-                            ...prevValue,
-                            contactNumber: e.target.value,
-                        }))}
-                    />
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Accused Description"
-                        placeholder="Description of accused"
-                        value={accused.description}
-                        onChange={(e) => setAccused((prevValue) => ({
-                            ...prevValue,
-                            description: e.target.value,
-                        }))}
-                    />
-
-                </div>
-                {/* Submit button */}
-                <div>
-                    <Button variant="contained" onClick={handleSubmit}>
-                        Submit
-                    </Button>
-                </div>
-            </Box>
+                    </div>
+                    {/* Submit button */}
+                    <div>
+                        <Button variant="contained" onClick={handleSubmit} style={{color:'white'}}>
+                            Submit
+                        </Button>
+                    </div>
+                </Box>
+            </div>
         </div>
     )
 }

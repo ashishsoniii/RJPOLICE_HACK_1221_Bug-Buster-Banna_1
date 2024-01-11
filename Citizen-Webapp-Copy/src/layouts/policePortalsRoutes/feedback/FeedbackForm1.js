@@ -8,6 +8,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import axios from "axios";
+import { Rating, Typography } from "@mui/material";
 
 export default function FeedbackForm() {
   const [firNumber, setFirNumber] = useState("");
@@ -47,7 +48,7 @@ export default function FeedbackForm() {
         name,
         address,
         city,
-        pinCode, 
+        pinCode,
         email,
         policeDistrict,
         policeStation,
@@ -79,6 +80,10 @@ export default function FeedbackForm() {
       alert("Internal Server Error. Please try again later.");
     }
   };
+
+  //trying the rating thing
+  const [value, setValue] = React.useState(3);
+  //rating trial ends here
 
   return (
     <div className="feedback-form homepage-main-areaa-form">
@@ -208,6 +213,7 @@ export default function FeedbackForm() {
             noValidate
             autoComplete="off"
           >
+            {/*
             <div>
               <FormControl component="fieldset" sx={{ mb: 2 }}>
                 <FormLabel component="legend">Overall Rating</FormLabel>
@@ -227,103 +233,68 @@ export default function FeedbackForm() {
                 </RadioGroup>
               </FormControl>
             </div>
+            */}
 
+            {/* now trying rating thing */}
             <div>
-              <FormControl component="fieldset" sx={{ mb: 2 }}>
-                <FormLabel component="legend">Hygiene rating</FormLabel>
+              <Typography component="legend">Overall Rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+              />
 
-                <RadioGroup
-                  row
-                  aria-label="Higenic rating"
-                  name="Higenic rating"
-                  value={policeStationRating.higenic}
-                  onChange={(e) =>
-                    setPoliceStationRating((prevRating) => ({
-                      ...prevRating,
-                      higenic: e.target.value,
-                    }))
-                  }
-                >
-                  <FormControlLabel value="1" control={<Radio />} label="1" />
-                  <FormControlLabel value="2" control={<Radio />} label="2" />
-                  <FormControlLabel value="3" control={<Radio />} label="3" />
-                  <FormControlLabel value="4" control={<Radio />} label="4" />
-                  <FormControlLabel value="5" control={<Radio />} label="5" />
-                </RadioGroup>
-              </FormControl>
-            </div>
-            <div>
-              <FormControl component="fieldset" sx={{ mb: 2 }}>
-                <FormLabel component="legend">behavior rating</FormLabel>
+              <Typography component="legend">Hygiene rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={policeStationRating.higenic}
+                onChange={(e) =>
+                  setPoliceStationRating((prevRating) => ({
+                    ...prevRating,
+                    higenic: e.target.value,
+                  }))
+                }
+              />
 
-                <RadioGroup
-                  row
-                  aria-label="behavior rating"
-                  name="behavior rating"
-                  value={policeStationRating.behavior}
-                  onChange={(e) =>
-                    setPoliceStationRating((prevRating) => ({
-                      ...prevRating,
-                      behavior: e.target.value,
-                    }))
-                  }
-                >
-                  <FormControlLabel value="1" control={<Radio />} label="1" />
-                  <FormControlLabel value="2" control={<Radio />} label="2" />
-                  <FormControlLabel value="3" control={<Radio />} label="3" />
-                  <FormControlLabel value="4" control={<Radio />} label="4" />
-                  <FormControlLabel value="5" control={<Radio />} label="5" />
-                </RadioGroup>
-              </FormControl>
-            </div>
-            <div>
-              <FormControl component="fieldset" sx={{ mb: 2 }}>
-                <FormLabel component="legend">easeOfProcess rating</FormLabel>
+              <Typography component="legend">Behavior rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={policeStationRating.behavior}
+                onChange={(e) =>
+                  setPoliceStationRating((prevRating) => ({
+                    ...prevRating,
+                    behavior: e.target.value,
+                  }))
+                }
+              />
 
-                <RadioGroup
-                  row
-                  aria-label="behavior rating"
-                  name="behavior rating"
-                  value={policeStationRating.easeOfProcess}
-                  onChange={(e) =>
-                    setPoliceStationRating((prevRating) => ({
-                      ...prevRating,
-                      easeOfProcess: e.target.value,
-                    }))
-                  }
-                >
-                  <FormControlLabel value="1" control={<Radio />} label="1" />
-                  <FormControlLabel value="2" control={<Radio />} label="2" />
-                  <FormControlLabel value="3" control={<Radio />} label="3" />
-                  <FormControlLabel value="4" control={<Radio />} label="4" />
-                  <FormControlLabel value="5" control={<Radio />} label="5" />
-                </RadioGroup>
-              </FormControl>
-            </div>
-            <div>
-              <FormControl component="fieldset" sx={{ mb: 2 }}>
-                <FormLabel component="legend">overall rating</FormLabel>
+              <Typography component="legend">Ease Of Process rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={policeStationRating.easeOfProcess}
+                onChange={(e) =>
+                  setPoliceStationRating((prevRating) => ({
+                    ...prevRating,
+                    easeOfProcess: e.target.value,
+                  }))
+                }
+              />
 
-                <RadioGroup
-                  row
-                  aria-label="behavior rating"
-                  name="behavior rating"
-                  value={policeStationRating.overall}
-                  onChange={(e) =>
-                    setPoliceStationRating((prevRating) => ({
-                      ...prevRating,
-                      overall: e.target.value,
-                    }))
-                  }
-                >
-                  <FormControlLabel value="1" control={<Radio />} label="1" />
-                  <FormControlLabel value="2" control={<Radio />} label="2" />
-                  <FormControlLabel value="3" control={<Radio />} label="3" />
-                  <FormControlLabel value="4" control={<Radio />} label="4" />
-                  <FormControlLabel value="5" control={<Radio />} label="5" />
-                </RadioGroup>
-              </FormControl>
+              <Typography component="legend">overall rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={policeStationRating.overall}
+                onChange={(e) =>
+                  setPoliceStationRating((prevRating) => ({
+                    ...prevRating,
+                    overall: e.target.value,
+                  }))
+                }
+              />
             </div>
+            {/*rating thing ends here*/}
+
+
           </Box>
           {/* <FormControl component="fieldset">
           <FormLabel component="legend">External Fill</FormLabel>
@@ -340,22 +311,22 @@ export default function FeedbackForm() {
         </FormControl>
       */}
         </div>
-        <div sx={{ mb: 2, flexBasis: "100%" }}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Details"
-            placeholder="Enter Details"
-            multiline
-            rows={4}
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-            sx={{ width: "100%" }}
-          />
-        </div>
+
+
+        <TextField style={{ flexBasis: '100%' }}
+          required
+          id="outlined-required"
+          label="Details"
+          placeholder="Enter Details"
+          multiline
+          rows={4}
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+          sx={{ width: "80%" }}
+        />
 
         <div>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button variant="contained" onClick={handleSubmit} style={{ color: 'white' }}>
             Submit
           </Button>
         </div>

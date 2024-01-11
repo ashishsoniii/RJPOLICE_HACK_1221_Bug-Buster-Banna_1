@@ -10,6 +10,8 @@ class ActionProvider {
 
     }
 
+    
+
     handleJavascriptList = () => {
         const message = this.createChatBotMessage(
             "Fantastic, I've got the following resources for you on Javascript:",
