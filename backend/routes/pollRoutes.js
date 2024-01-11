@@ -65,6 +65,30 @@ router.post("/:pollId/submit", async (req, res) => {
   }
 });
 
+
+
+// Delete a poll
+router.delete("/:pollId", async (req, res) => {
+    const { pollId } = req.params;
+  
+    try {
+      const poll = await Poll.findByIdAndDelete(pollId);
+  
+      if (!poll) {
+        return res.status(404).json({ error: "Poll not found" });
+      }
+  
+      res.status(204).json({ success: true }); // No content response
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+  
+  
+
+
+
+
 // Fetch poll results (for admin)
 router.get("/:pollId/results", async (req, res) => {
   const { pollId } = req.params;
@@ -86,6 +110,7 @@ router.get("/:pollId/results", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 module.exports = router;
 

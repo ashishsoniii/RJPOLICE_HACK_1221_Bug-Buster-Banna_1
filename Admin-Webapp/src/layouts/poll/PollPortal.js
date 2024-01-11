@@ -44,28 +44,7 @@ function PollPortal() {
       // Handle error accordingly
     }
   };
-  const handleButtonClickDelete = async (accordionId) => {
-    const selectedOption = selectedOptions[accordionId];
-    console.log(
-      `Accordion ID: ${accordionId}, Selected Option: ${selectedOption}`
-    );
-
-    console.log(accordionId);
-
-    // Make an HTTP POST request to submit the answer
-    try {
-      await axios.post(`http://localhost:5000/api/poll/${accordionId}/submit`, {
-        answer: selectedOption,
-      });
-
-      // You can add additional logic here after successfully submitting the answer
-      alert("Answer submitted successfully");
-    } catch (error) {
-      console.error("Error submitting answer:", error.message);
-      // Handle error accordingly
-    }
-  };
-
+  
   useEffect(() => {
     // Fetch all polls when the component mounts
     const fetchPolls = async () => {
@@ -78,9 +57,31 @@ function PollPortal() {
         // Handle error accordingly
       }
     };
-
+    
     fetchPolls();
   }, []); // Empty dependency array ensures the effect runs only once on mount
+  const handleButtonClickDelete = async (accordionId) => {
+    const selectedOption = selectedOptions[accordionId];
+    console.log(
+      `Accordion ID: ${accordionId}, Selected Option: ${selectedOption}`
+    );
+
+    console.log(accordionId);
+
+    // Make an HTTP POST request to submit the answer
+    try {
+      await axios.delete(`http://localhost:5000/api/poll/${accordionId}`, {
+        // answer: selectedOption,
+      });
+
+      // You can add additional logic here after successfully submitting the answer
+      alert("Answer Deleted successfully");
+
+    } catch (error) {
+      console.error("Error submitting answer:", error.message);
+      // Handle error accordingly
+    }
+  };
 
   return (
     <Box sx={{ margin: "0rem 2rem 0rem 2rem" }}>
