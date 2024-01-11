@@ -8,7 +8,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import axios from "axios";
-import { Rating, Typography } from "@mui/material";
+import { Alert, Rating, Snackbar, Stack, Typography } from "@mui/material";
 
 export default function FeedbackForm() {
   const [firNumber, setFirNumber] = useState("");
@@ -35,6 +35,28 @@ export default function FeedbackForm() {
   const [followUpProcessRating, setFollowUpProcessRating] = useState("1");
   const [suggestionsImprovements, setSuggestionsImprovements] = useState("");
   const [safetyPerception, setSafetyPerception] = useState("");
+
+  //resetting the form fields after submission
+  const resetForm = ()=>{
+    setFirNumber("");
+    setMobile("");
+    setName("");
+    setAddress("");
+    setCity("");
+    setPinCode("");
+    setEmail("");
+    setPoliceDistrict("");
+    setPoliceStation("");
+    setRating("3");
+    setDetails("");
+    setPoliceStationRating({
+      higenic:"3",
+      behavior:"3",
+      easeOfProcess:"3",
+      overall:"3",
+    })
+  };
+  //
 
   const handleSubmit = async () => {
     try {
@@ -70,20 +92,39 @@ export default function FeedbackForm() {
       // Check if the request was successful
       if (response.status === 201) {
         // Display success message
-        alert("Form successfully submitted!");
+        // alert("Form successfully submitted!");
+        setOpenSuccess(true);
+        resetForm();
       } else {
-        // Display error message
-        alert("Error submitting form. Please try again.");
+        // Display error message if any other status code is there
+        // alert("Error submitting form. Please try again.");
+        setOpenOtherError(true);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Internal Server Error. Please try again later.");
+      // alert("Internal Server Error. Please try again later.");
+      setOpenServerError(true);
     }
   };
 
-  //trying the rating thing
-  const [value, setValue] = React.useState(3);
-  //rating trial ends here
+  //trying the alert snackbar thing
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openOtherError, setOpenOtherError] = useState(false);
+  const [openServerError, setOpenServerError] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSuccess(false);
+    setOpenOtherError(false);
+    setOpenServerError(false);
+  };
+
+  //alert snackbar trial ends here
+
+  
 
   return (
     <div className="feedback-form homepage-main-areaa-form">
@@ -121,6 +162,25 @@ export default function FeedbackForm() {
             mx: "auto",
           }}
         >
+          {/* Snakbar thing */}
+          <Stack spacing={2} sx={{ width: '100%' }}>
+            <Snackbar open={openSuccess} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{vertical:"top",horizontal:"center"}} >
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' , padding:'15px', backgroundColor: '#76CE7C', color:'black', fontWeight:'bold'}}>
+                Feedback submitted successfully!
+              </Alert>
+            </Snackbar>
+            <Snackbar open={openOtherError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{vertical:"top",horizontal:"center"}} >
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' , padding:'15px', backgroundColor: '#D22966',  fontWeight:'bold' }} style={{color:'white'}}>
+                Error submitting form! Try again.
+              </Alert>
+            </Snackbar>
+            <Snackbar open={openServerError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{vertical:"top",horizontal:"center"}} >
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' , padding:'15px', backgroundColor: '#D22966',  fontWeight:'bold'}} style={{color:'white'}}>
+                Internal Server Error! Please try again later.
+              </Alert>
+            </Snackbar>
+          </Stack>
+          {/* Snakbar thing */}
           <TextField
             required
             id="outlined-required"

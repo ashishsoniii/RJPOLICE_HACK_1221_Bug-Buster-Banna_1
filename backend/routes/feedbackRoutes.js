@@ -33,11 +33,13 @@ router.post("/fillFeedback", async (req, res) => {
     } = req.body;
 
     //check if the FIR with corresponding number even exists or not
-    const existingFir = await Efir.findOne({ firNumber });
-    if (!existingFir) {
-      res.status(400).json({ message: "FIR does not exist!" });
-      return;
-    }
+    // const existingFir = await Efir.findOne({ firNumber });
+    // if (!existingFir) {
+    //   res.status(400).json({ message: "FIR does not exist!" });
+    //   return;
+    // }
+
+    
     // Check if the FIR status is "Resolved"
     // if (existingFir.status !== "Resolved") {
     //   return res.status(400).json({ message: "FIR is not resolved yet!" });
