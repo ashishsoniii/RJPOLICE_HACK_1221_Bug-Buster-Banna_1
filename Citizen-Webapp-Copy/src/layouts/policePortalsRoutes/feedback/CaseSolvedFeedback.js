@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import axios from "axios";
+import { Checkbox, FormGroup, Rating, Typography } from "@mui/material";
 
 // it will add data to the model "postFirFeedback"
 
@@ -27,6 +28,9 @@ function CaseSolvedFeedback() {
     const [policeStation, setPoliceStation] = useState("");
     const [details, setDetails] = useState("");
     const [timelyResolved, setTimelyResolved] = useState(true);
+    const handleCheckboxChange = (event) => {
+        setTimelyResolved(event.target.checked);
+    };
     const [satisfactionLevel, setSatisfactionLevel] = useState("3");
     const [comments, setComments] = useState("");
     const [externalFill, setExternalFill] = useState(false);
@@ -208,23 +212,13 @@ function CaseSolvedFeedback() {
                         value={comments}
                         onChange={(e) => setComments(e.target.value)}
                     />
-
-                    <FormControl sx={{ mb: 4, flexBasis: "48%", textAlign: "left" }}>
-
-                        <FormLabel component="legend" style={{ marginBottom: '0px' }}>{`Timely Resolved? ${timelyResolved ? "YES" : "NO"}`}</FormLabel>
-                        <Select style={{
-                            "& .MuiTextField-root": { marginTop: 3, flexBasis: "48%" },
-                        }}
-                            label="Timely Resolved"
-                            value={timelyResolved}
-                            onChange={(e) => { if (e.target.value === "Yes") { setTimelyResolved(true) } else { setTimelyResolved(false) } }}
-
-                        >
-                            <MenuItem value="Yes">Yes</MenuItem>
-                            <MenuItem value="No">No</MenuItem>
-                        </Select>
-
-                    </FormControl>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={timelyResolved} onChange={handleCheckboxChange} style={{float:'right'}}/>}
+                            label={<Typography variant="body3">Timely Resolved?</Typography>}
+                            style={{ justifyContent: "space-between", width: "100%", marginLeft:'10px' }}
+                        />
+                    </FormGroup>
 
                     {/* text fields */}
 
@@ -249,124 +243,43 @@ function CaseSolvedFeedback() {
                     >
 
                         <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Satisfaction Level</FormLabel>
+                            <Typography component="legend">Satisfaction Level</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={satisfactionLevel}
+                                onChange={(e) => setSatisfactionLevel(e.target.value)}
+                            />
 
-                                <RadioGroup
-                                    row
-                                    aria-label="Satisfaction Level"
-                                    name="Satisfaction Level"
-                                    value={satisfactionLevel}
-                                    onChange={(e) => setSatisfactionLevel(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
+                            <Typography component="legend">Problem Resolution Rating</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={problemResolutionRating}
+                                onChange={(e) => setProblemResolutionRating(e.target.value)}
+                            />
+
+                            <Typography component="legend">Accessibility Rating</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={accessibilityRating}
+                                onChange={(e) => setAccessibilityRating(e.target.value)}
+                            />
+
+                            <Typography component="legend">Follow-up Process Rating</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={followUpProcessRating}
+                                onChange={(e) => setFollowUpProcessRating(e.target.value)}
+                            />
+
+                            <Typography component="legend">Safety Perception</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={safetyPerception}
+                                onChange={(e) => setSafetyPerception(e.target.value)}
+                            />
                         </div>
 
-                        <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Response Time Rating</FormLabel>
 
-                                <RadioGroup
-                                    row
-                                    aria-label="RT rating"
-                                    name="Response Time Rating"
-                                    value={responseTimeRating}
-                                    onChange={(e) => setResponseTimeRating(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-
-                        <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Problem Resolution Rating</FormLabel>
-
-                                <RadioGroup
-                                    row
-                                    aria-label="PR rating"
-                                    name="Problem Resolution Rating"
-                                    value={problemResolutionRating}
-                                    onChange={(e) => setProblemResolutionRating(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-
-                        <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Accessibility Rating</FormLabel>
-
-                                <RadioGroup
-                                    row
-                                    aria-label="Accessibility rating"
-                                    name="Accessibility Rating"
-                                    value={accessibilityRating}
-                                    onChange={(e) => setAccessibilityRating(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-
-                        <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Follow-up Process Rating</FormLabel>
-
-                                <RadioGroup
-                                    row
-                                    aria-label="FUP rating"
-                                    name="Follow-up Process Rating"
-                                    value={followUpProcessRating}
-                                    onChange={(e) => setFollowUpProcessRating(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-
-                        <div>
-                            <FormControl component="fieldset" sx={{ mb: 2 }}>
-                                <FormLabel component="legend">Safety Perception</FormLabel>
-
-                                <RadioGroup
-                                    row
-                                    aria-label="SP"
-                                    name="Safety Perception"
-                                    value={safetyPerception}
-                                    onChange={(e) => setSafetyPerception(e.target.value)}
-                                >
-                                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
 
                     </Box>
 
@@ -385,7 +298,7 @@ function CaseSolvedFeedback() {
                     />
 
                     <div style={{ flexBasis: "100%", marginTop: 2 }}>
-                        <Button variant="contained" onClick={handleSubmit}>
+                        <Button variant="contained" onClick={handleSubmit} style={{ color: 'white' }}>
                             Submit
                         </Button>
                     </div>

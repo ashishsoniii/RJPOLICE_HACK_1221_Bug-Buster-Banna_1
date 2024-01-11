@@ -233,7 +233,7 @@ function PoliceStationFeedback() {
                 </div>
                 {/* Submit button */}
                 <div>
-                    <Button variant="contained" onClick={handleSubmit}>
+                    <Button variant="contained" onClick={handleSubmit} style={{color:'white'}}>
                         Submit
                     </Button>
                 </div>
