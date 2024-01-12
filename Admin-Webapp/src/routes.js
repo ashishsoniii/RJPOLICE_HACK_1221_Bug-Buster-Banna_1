@@ -30,7 +30,7 @@ const routes = [
   // },
   {
     type: "collapse",
-    name: "Feedback",
+    name: "Feedback Analyser",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Poll",
+    name: "Poll Manager",
     key: "poll",
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/poll",
