@@ -23,6 +23,7 @@ import Cards from "layouts/policePortalsRoutes/Cards";
 import { useState } from "react";
 import PollPortal from "./PollPortal";
 import PollAdd from "./PollAdd";
+import PollPortalDeactive from "./PollPortalDeactive";
 
 function Tables() {
   const { columns, rows } = authorsTableData();
@@ -60,11 +61,46 @@ function Tables() {
                   }
                 }
               >
-                <MDBox pt={6}>
+                <MDBox pt={2}>
                   <PollAdd />
                 </MDBox>
-                <MDBox pt={6} my={3}>
+                <MDBox pt={1} my={1}>
                   <PollPortal />
+                </MDBox>
+              </div>
+            </Card>
+          </Grid>
+        </Grid>
+      </MDBox>
+      <MDBox pt={6} pb={3}>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <Card>
+              <MDBox
+                mx={2}
+                mt={-3}
+                py={3}
+                px={2}
+                variant="gradient"
+                bgColor="info"
+                borderRadius="lg"
+                coloredShadow="info"
+              >
+                <MDTypography variant="h6" color="white">
+                  Poll - Deactivated
+                </MDTypography>
+              </MDBox>
+              <div
+                style={
+                  {
+                    // display: "flex",
+                    // justifyContent: "center",
+                    // alignItems: "center",
+                  }
+                }
+              >
+                <MDBox pt={1} my={1}>
+                  <PollPortalDeactive />
                 </MDBox>
               </div>
             </Card>

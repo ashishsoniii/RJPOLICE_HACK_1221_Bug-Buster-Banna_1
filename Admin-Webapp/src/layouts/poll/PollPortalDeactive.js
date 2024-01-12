@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import axios from "axios";
 
-function PollPortal() {
+function PollPortalDeactive() {
   const [accordionData, setAccordionData] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -38,18 +38,20 @@ function PollPortal() {
       });
 
       // You can add additional logic here after successfully submitting the answer
-      alert("Answer submitted successfully");
+      alert("Poll submitted successfully");
     } catch (error) {
       console.error("Error submitting answer:", error.message);
       // Handle error accordingly
     }
   };
-  
+
   useEffect(() => {
     // Fetch all polls when the component mounts
     const fetchPolls = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/poll");
+        const response = await axios.get(
+          "http://localhost:5000/api/poll/deactive"
+        );
         setAccordionData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -57,9 +59,10 @@ function PollPortal() {
         // Handle error accordingly
       }
     };
-    
+
     fetchPolls();
   }, []); // Empty dependency array ensures the effect runs only once on mount
+
   const handleButtonClickDelete = async (accordionId) => {
     const selectedOption = selectedOptions[accordionId];
     console.log(
@@ -75,14 +78,13 @@ function PollPortal() {
       });
 
       // You can add additional logic here after successfully submitting the answer
-      alert("Answer Deleted successfully");
-
+      alert("Poll Deleted successfully");
     } catch (error) {
       console.error("Error submitting answer:", error.message);
       // Handle error accordingly
     }
   };
-  const handleButtonClickDeactivate = async (accordionId) => {
+  const handleButtonClickactivate = async (accordionId) => {
     const selectedOption = selectedOptions[accordionId];
     console.log(
       `Accordion ID: ${accordionId}, Selected Option: ${selectedOption}`
@@ -92,15 +94,17 @@ function PollPortal() {
 
     // Make an HTTP POST request to submit the answer
     try {
-      await axios.put(`http://localhost:5000/api/poll/${accordionId}/deactivate`, {
-        // answer: selectedOption,
-      });
+      await axios.put(
+        `http://localhost:5000/api/poll/${accordionId}/activate`,
+        {
+          // answer: selectedOption,
+        }
+      );
 
       // You can add additional logic here after successfully submitting the answer
-      alert("Question Deactivated successfully");
-
+      alert("Question Activated successfully");
     } catch (error) {
-      console.error("Error submitting answer:", error.message);
+      console.error("Error submitting Response:", error.message);
       // Handle error accordingly
     }
   };
@@ -177,9 +181,9 @@ function PollPortal() {
           <Button
             variant="contained"
             color="success"
-            onClick={() => handleButtonClickDeactivate(accordion._id)}
+            onClick={() => handleButtonClickactivate(accordion._id)}
           >
-            Deactivate Poll
+            Activate Poll
           </Button>
         </Accordion>
       ))}
@@ -187,4 +191,4 @@ function PollPortal() {
   );
 }
 
-export default PollPortal;
+export default PollPortalDeactive;

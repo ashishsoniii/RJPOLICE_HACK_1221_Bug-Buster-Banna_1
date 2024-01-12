@@ -13,6 +13,15 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+// Fetch all polls - deactive
+router.get("/deactive", async (req, res) => {
+  try {
+    const polls = await Poll.find({ active: false });
+    res.json(polls);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 // Create a new poll
 router.post("/", async (req, res) => {
@@ -86,6 +95,53 @@ router.delete("/:pollId", async (req, res) => {
   
   
 
+// Deactivate a poll
+router.put("/:pollId/deactivate", async (req, res) => {
+  const { pollId } = req.params;
+
+  try {
+    const poll = await Poll.findById(pollId);
+
+    if (!poll) {
+      return res.status(404).json({ error: "Poll not found" });
+    }
+
+    if (!poll.active) {
+      return res.status(400).json({ error: "Poll is already inactive" });
+    }
+
+    poll.active = false;
+    await poll.save();
+
+    res.status(200).json({ success: true, message: "Poll deactivated successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Activate a poll
+router.put("/:pollId/activate", async (req, res) => {
+  const { pollId } = req.params;
+
+  try {
+    const poll = await Poll.findById(pollId);
+
+    if (!poll) {
+      return res.status(404).json({ error: "Poll not found" });
+    }
+
+    if (!poll.active) {
+      return res.status(400).json({ error: "Poll is already Active" });
+    }
+
+    poll.active = true;
+    await poll.save();
+
+    res.status(200).json({ success: true, message: "Poll Activated successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 
 
