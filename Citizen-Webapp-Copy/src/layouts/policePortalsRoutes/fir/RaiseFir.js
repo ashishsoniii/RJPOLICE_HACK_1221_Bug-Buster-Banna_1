@@ -11,6 +11,8 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import axios from "axios";
+import { Alert, Snackbar, Stack } from "@mui/material";
+import { setSidenavColor } from "context";
 
 function RaiseFir() {
     const [complainant, setComplainant] = useState({
@@ -31,6 +33,26 @@ function RaiseFir() {
         description: "",
     });
 
+    const resetForm= ()=>{
+        setComplainant({
+            name:"",
+            contactNumber:"",
+            email:"",
+            address:""
+        });
+        setIncidentDetails({
+            location:"",
+            description:"",
+            category:"",
+        });
+        setAccused({
+            name:"",
+            address:"",
+            contactNumber:"",
+            description:"",
+        })
+    };
+
     const handleSubmit = async () => {
         try {
             const apiUrl = "http://localhost:5000/api/efir/createEFIR";
@@ -48,19 +70,40 @@ function RaiseFir() {
             // Check if the request was successful
             if (response.status === 201) {
                 // Display success message
-                alert("Form successfully submitted!");
+                // alert("Form successfully submitted!");
+                setOpenSuccess(true);
+                resetForm();
             } else {
                 // Display error message
-                alert("Error submitting form. Please try again.");
+                // alert("Error submitting form. Please try again.");
+                setOpenOtherError(true);
             }
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Internal Server Error. Please try again later.");
+            // alert("Internal Server Error. Please try again later.");
+            setOpenServerError(true);
         }
     };
 
+    //trying the alert snackbar thing
+    const [openSuccess, setOpenSuccess] = useState(false);
+    const [openOtherError, setOpenOtherError] = useState(false);
+    const [openServerError, setOpenServerError] = useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSuccess(false);
+        setOpenOtherError(false);
+        setOpenServerError(false);
+    };
+
+    //alert snackbar trial ends here
+
     return (
-        <div style={{display:'flex',alignItems:'center',alignContent:"center"}}>
+        <div style={{ display: 'flex', alignItems: 'center', alignContent: "center" }}>
             <div className="feedback-form homepage-main-areaa-form" >
                 <Box
                     component="form"
@@ -78,7 +121,7 @@ function RaiseFir() {
                         maxWidth: 1050,
                         mx: "auto",
 
-                        justifySelf:'center',
+                        justifySelf: 'center',
                     }}
                     noValidate
                     autoComplete="off"
@@ -98,6 +141,27 @@ function RaiseFir() {
                             mx: "auto",
                         }}
                     >
+
+                        {/* Snakbar thing */}
+                        <Stack spacing={2} sx={{ width: '100%' }}>
+                            <Snackbar open={openSuccess} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                                <Alert onClose={handleClose} severity="success" sx={{ width: '100%', padding: '15px', backgroundColor: '#76CE7C', color: 'black', fontWeight: 'bold' }}>
+                                    Feedback submitted successfully!
+                                </Alert>
+                            </Snackbar>
+                            <Snackbar open={openOtherError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                                <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                    Error submitting form! Try again.
+                                </Alert>
+                            </Snackbar>
+                            <Snackbar open={openServerError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                                <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                    Internal Server Error! Please try again later.
+                                </Alert>
+                            </Snackbar>
+                        </Stack>
+                        {/* Snakbar thing */}
+
                         <TextField
                             required
                             id="outlined-required"
@@ -235,7 +299,7 @@ function RaiseFir() {
                     </div>
                     {/* Submit button */}
                     <div>
-                        <Button variant="contained" onClick={handleSubmit} style={{color:'white'}}>
+                        <Button variant="contained" onClick={handleSubmit} style={{ color: 'white' }}>
                             Submit
                         </Button>
                     </div>

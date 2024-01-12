@@ -11,7 +11,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import axios from "axios";
-import { Checkbox, FormGroup, Rating, Typography } from "@mui/material";
+import { Alert, Checkbox, FormGroup, Rating, Snackbar, Stack, Typography } from "@mui/material";
 
 // it will add data to the model "postFirFeedback"
 
@@ -49,6 +49,28 @@ function CaseSolvedFeedback() {
     const [suggestionsImprovements, setSuggestionsImprovements] = useState("");
     const [safetyPerception, setSafetyPerception] = useState("3");
 
+    //resetting the form after submission
+    const resetForm= ()=>{
+        setFirNumber("");
+        setName("");
+        setAddress("");
+        setCity("");
+        setPinCode("");
+        setEmail("");
+        setPoliceDistrict("");
+        setPoliceStation("");
+        setDetails("");
+        setTimelyResolved(true);
+        setSatisfactionLevel(3);
+        setComments("");
+        setProblemResolutionRating("3");
+        setAccessibilityRating("3");
+        setFollowUpProcessRating("3");
+        setSuggestionsImprovements("");
+        setSafetyPerception("3");
+    };
+    //
+
     const handleSubmit = async () => {
         try {
             // Your backend API endpoint for feedback submission
@@ -84,16 +106,37 @@ function CaseSolvedFeedback() {
             // Check if the request was successful
             if (response.status === 201) {
                 // Display success message
-                alert("Form successfully submitted!");
+                // alert("Form successfully submitted!");
+                setOpenSuccess(true);
+                resetForm();
             } else {
                 // Display error message
-                alert("Error submitting form. Please try again.");
+                // alert("Error submitting form. Please try again.");
+                setOpenOtherError(true);
             }
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Internal Server Error. Please try again later.");
+            // alert("Internal Server Error. Please try again later.");
+            setOpenServerError(true);
         }
     };
+
+    //trying the alert snackbar thing
+    const [openSuccess, setOpenSuccess] = useState(false);
+    const [openOtherError, setOpenOtherError] = useState(false);
+    const [openServerError, setOpenServerError] = useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSuccess(false);
+        setOpenOtherError(false);
+        setOpenServerError(false);
+    };
+
+    //alert snackbar trial ends here
 
     return (
         <div className="feedback-form homepage-main-areaa-form">
@@ -132,6 +175,25 @@ function CaseSolvedFeedback() {
                     }}
                 >
 
+                    {/* Snakbar thing */}
+                    <Stack spacing={2} sx={{ width: '100%' }}>
+                        <Snackbar open={openSuccess} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%', padding: '15px', backgroundColor: '#76CE7C', color: 'black', fontWeight: 'bold' }}>
+                                Feedback submitted successfully!
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={openOtherError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                Error submitting form! Try again.
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={openServerError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                Internal Server Error! Please try again later.
+                            </Alert>
+                        </Snackbar>
+                    </Stack>
+                    {/* Snakbar thing */}
                     <TextField
                         required
                         id="outlined-required"
@@ -214,9 +276,9 @@ function CaseSolvedFeedback() {
                     />
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox checked={timelyResolved} onChange={handleCheckboxChange} style={{float:'right'}}/>}
+                            control={<Checkbox checked={timelyResolved} onChange={handleCheckboxChange} style={{ float: 'right' }} />}
                             label={<Typography variant="body3">Timely Resolved?</Typography>}
-                            style={{ justifyContent: "space-between", width: "100%", marginLeft:'10px' }}
+                            style={{ justifyContent: "space-between", width: "100%", marginLeft: '10px' }}
                         />
                     </FormGroup>
 

@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import axios from "axios";
+import { Alert, Snackbar, Stack } from "@mui/material";
 
 // it will add data to stationFeedback
 
@@ -33,6 +34,26 @@ function PoliceStationFeedback() {
         description: ""
     });
 
+    const resetForm = ()=>{
+        setComplainant({
+            name:"",
+            mobile:"",
+            address:"",
+            city:"",
+            pinCode:"",
+            email:"",
+        });
+        setAccuse({
+            isPoliceOfficer:false,
+            officerName:"",
+            policeDistrict:"",
+            policeStation:"",
+        });
+        setComplaintDetails({
+            description:"",
+        })
+    };
+
     const handleSubmit = async () => {
         try {
             const apiUrl = "http://localhost:5000/api/feedback/fillStationFeedback";
@@ -50,16 +71,38 @@ function PoliceStationFeedback() {
             // Check if the request was successful
             if (response.status === 201) {
                 // Display success message
-                alert("Form successfully submitted!");
+                // alert("Form successfully submitted!");
+                setOpenSuccess(true);
+                resetForm();
             } else {
                 // Display error message
-                alert("Error submitting form. Please try again.");
+                // alert("Error submitting form. Please try again.");
+                setOpenOtherError(true);
             }
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Internal Server Error. Please try again later.");
+            // alert("Internal Server Error. Please try again later.");
+            setOpenServerError(true);
         }
     }
+
+    //trying the alert snackbar thing
+    const [openSuccess, setOpenSuccess] = useState(false);
+    const [openOtherError, setOpenOtherError] = useState(false);
+    const [openServerError, setOpenServerError] = useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSuccess(false);
+        setOpenOtherError(false);
+        setOpenServerError(false);
+    };
+
+    //alert snackbar trial ends here
+
     return (
         <div className="feedback-form homepage-main-areaa-form">
             <Box
@@ -96,6 +139,27 @@ function PoliceStationFeedback() {
                         mx: "auto",
                     }}
                 >
+
+                    {/* Snakbar thing */}
+                    <Stack spacing={2} sx={{ width: '100%' }}>
+                        <Snackbar open={openSuccess} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%', padding: '15px', backgroundColor: '#76CE7C', color: 'black', fontWeight: 'bold' }}>
+                                Feedback submitted successfully!
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={openOtherError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                Error submitting form! Try again.
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={openServerError} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }} >
+                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%', padding: '15px', backgroundColor: '#D22966', fontWeight: 'bold' }} style={{ color: 'white' }}>
+                                Internal Server Error! Please try again later.
+                            </Alert>
+                        </Snackbar>
+                    </Stack>
+                    {/* Snakbar thing */}
+
                     <TextField
                         required
                         id="outlined-required"
@@ -233,7 +297,7 @@ function PoliceStationFeedback() {
                 </div>
                 {/* Submit button */}
                 <div>
-                    <Button variant="contained" onClick={handleSubmit} style={{color:'white'}}>
+                    <Button variant="contained" onClick={handleSubmit} style={{ color: 'white' }}>
                         Submit
                     </Button>
                 </div>
