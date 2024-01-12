@@ -12,6 +12,7 @@ const adminRoutes = require("./routes/adminRoute");
 const feedbackRoute = require("./routes/feedbackRoutes");
 const firRoutes = require("./routes/firRoutes");
 const pollRoutes = require("./routes/pollRoutes");
+const emailRoutes = require("./routes/emailRoutes");
 
 // Middlewares
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use("/admin", adminRoutes);
 app.use("/api/efir", firRoutes);
 
 app.use("/api/poll", pollRoutes);
+app.use("/api/emails", emailRoutes);
 
 // Routes
 app.get("/", (req, res) => {
