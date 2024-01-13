@@ -13,6 +13,7 @@ const feedbackRoute = require("./routes/feedbackRoutes");
 const firRoutes = require("./routes/firRoutes");
 const pollRoutes = require("./routes/pollRoutes");
 const emailRoutes = require("./routes/emailRoutes");
+const chatbotRoutes=require("./routes/chatbotRoutes");
 
 // Middlewares
 app.use(express.json());
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["*"],
     credentials: true,
   })
 );
@@ -35,6 +36,8 @@ app.use("/api/efir", firRoutes);
 
 app.use("/api/poll", pollRoutes);
 app.use("/api/emails", emailRoutes);
+
+app.use("/api/chatbot",chatbotRoutes);
 
 // Routes
 app.get("/", (req, res) => {

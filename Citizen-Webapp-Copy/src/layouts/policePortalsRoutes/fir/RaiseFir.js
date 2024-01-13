@@ -33,23 +33,23 @@ function RaiseFir() {
         description: "",
     });
 
-    const resetForm= ()=>{
+    const resetForm = () => {
         setComplainant({
-            name:"",
-            contactNumber:"",
-            email:"",
-            address:""
+            name: "",
+            contactNumber: "",
+            email: "",
+            address: ""
         });
         setIncidentDetails({
-            location:"",
-            description:"",
-            category:"",
+            location: "",
+            description: "",
+            category: "",
         });
         setAccused({
-            name:"",
-            address:"",
-            contactNumber:"",
-            description:"",
+            name: "",
+            address: "",
+            contactNumber: "",
+            description: "",
         })
     };
 
@@ -84,6 +84,42 @@ function RaiseFir() {
             setOpenServerError(true);
         }
     };
+
+    // handling submit2 //createChatbotFeedback is definitely working CONFIRMED!
+    const handleSubmit2 = async () => {
+        try {
+            const apiUrl = "http://localhost:5000/api/chatbot/createChatbotFeedback";
+
+            //constructing object to be sent
+            const feedbackData = {
+                name: "sankalp",
+                firNo: 123,
+                email: "sank@lp.com",
+                contactNo: 99776,
+                overallRating: "Good",
+            }
+
+            // Make a POST request to submit the feedback
+            const response = await axios.post(apiUrl, feedbackData);
+
+            // Check if the request was successful
+            if (response.status === 201) {
+                // Display success message
+                // alert("Form successfully submitted!");
+                setOpenSuccess(true);
+                resetForm();
+            } else {
+                // Display error message
+                // alert("Error submitting form. Please try again.");
+                setOpenOtherError(true);
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            // alert("Internal Server Error. Please try again later.");
+            setOpenServerError(true);
+        }
+    };
+    // handled submit2
 
     //trying the alert snackbar thing
     const [openSuccess, setOpenSuccess] = useState(false);
@@ -303,6 +339,12 @@ function RaiseFir() {
                             Submit
                         </Button>
                     </div>
+
+                    <div>
+                        <Button variant="contained" onClick={handleSubmit2} style={{ color: 'white' }}>
+                            Submit
+                        </Button>
+                        </div>
                 </Box>
             </div>
         </div>
