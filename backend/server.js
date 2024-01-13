@@ -13,6 +13,7 @@ const feedbackRoute = require("./routes/feedbackRoutes");
 const firRoutes = require("./routes/firRoutes");
 const pollRoutes = require("./routes/pollRoutes");
 const emailRoutes = require("./routes/emailRoutes");
+const recipientsRoutes = require("./routes/recipientsRoutes");
 const chatbotRoutes=require("./routes/chatbotRoutes");
 
 // Middlewares
@@ -37,6 +38,7 @@ app.use("/api/efir", firRoutes);
 
 app.use("/api/poll", pollRoutes);
 app.use("/api/emails", emailRoutes);
+app.use("/api/getemails", recipientsRoutes);
 
 app.use("/api/chatbot",chatbotRoutes);
 

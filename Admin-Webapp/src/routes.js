@@ -2,6 +2,7 @@
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Billing from "layouts/billing";
+import EmailBulk from "layouts/bulkSMS";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -28,6 +29,14 @@ const routes = [
   //   route: "/tables",
   //   component: <Tables />,
   // },
+  {
+    type: "collapse",
+    name: "Bulk Emails",
+    key: "emailsBulk",
+    icon: <Icon fontSize="small">table_view</Icon>,
+    route: "/emailsBulk",
+    component: <EmailBulk />,
+  },
   {
     type: "collapse",
     name: "Feedback Analyser",

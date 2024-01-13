@@ -36,7 +36,7 @@ router.post("/send", async (req, res) => {
       .json({ success: false, message: "Internal Server Error" });
   }
 });
-
+       
 // Route to get a list of sent emails
 router.get("/logs", async (req, res) => {
   try {
@@ -50,5 +50,24 @@ router.get("/logs", async (req, res) => {
       .json({ success: false, message: "Internal Server Error" });
   }
 });
+       
+// In your backend route file (e.g., emailRoutes.js)
+router.get("/totalEmailsSent", async (req, res) => {
+  try {
+    // Implement logic to fetch the total number of emails sent from your database
+    const totalEmailsSent = await EmailLog.countDocuments();
+    
+    return res.status(200).json({ totalEmailsSent });
+  } catch (error) {
+    console.error("Error fetching total emails sent:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 
 module.exports = router;
+
+
+
+
+
