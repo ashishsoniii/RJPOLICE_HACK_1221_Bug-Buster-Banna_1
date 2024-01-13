@@ -62,4 +62,49 @@ router.get("/allFir", async (req, res) => {
 });
 
 
+
+
+
+
+
+// Update FIR status
+router.put("/updateStatus/:firNumber", async (req, res) => {
+    try {
+      const { firNumber } = req.params;
+      const { status } = req.body;
+  
+      // Find and update the FIR by firNumber
+      const updatedEFIR = await Efir.findOneAndUpdate(
+        { firNumber },
+        { $set: { status } },
+        { new: true }
+      );
+  
+      res.status(200).json(updatedEFIR);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
+
+// Display All Submitted Feedback
+router.get("/allFirAdmin", async (req, res) => {
+    try {
+        const allFir = await Efir.find();
+
+        // // include only necessary information-> firNumber and status
+        // const simplifiedEFIRs = allFir.map((efir) => ({
+        //     firNumber: efir.firNumber,
+        //     status: efir.status,
+        // }));
+
+        res.status(200).json(allFir);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
 module.exports = router;
