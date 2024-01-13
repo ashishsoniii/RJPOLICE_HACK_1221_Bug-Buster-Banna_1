@@ -344,7 +344,7 @@ function RaiseFir() {
                         <Button variant="contained" onClick={handleSubmit2} style={{ color: 'white' }}>
                             Submit
                         </Button>
-                        </div>
+                    </div>
                 </Box>
             </div>
         </div>

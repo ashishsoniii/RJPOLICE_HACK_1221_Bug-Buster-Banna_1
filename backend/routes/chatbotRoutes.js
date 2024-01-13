@@ -45,6 +45,8 @@ router.post("/createChatbotFeedback",async (req,res) =>{
         });
         await newChatbotFeedback.save();
 
+        res.status(201).json({message:"Your form has been submitted"});
+
     } catch ( error ){
         console.log(error);
         res.status(500).json({message:"Internal Server Error"});
@@ -68,6 +70,8 @@ router.post("/createChatbotTicketStation", async(req,res) =>{
             description
         });
         await newChatbotTicketStation.save();
+
+        res.status(201).json({message:"Your ticket has been created"});
 
     }catch (error) {
         console.error(error);
@@ -95,6 +99,8 @@ router.post("/createChatbotTicketOfficer", async(req,res) =>{
         });
         await newChatbotTicketOfficer.save();
 
+        res.status(201).json({message:"Your ticket has been created"});
+
     }catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
@@ -116,6 +122,8 @@ router.post("/createChatbotTicketOther", async(req,res) =>{
             description
         });
         await newChatbotTicketOther.save();
+
+        res.status(201).json({message:"Your ticket has been created"});
 
     }catch (error) {
         console.error(error);

@@ -22,10 +22,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["*"],
+    origin: ["http://localhost:3000", "http://localhost:3001","https://mediafiles.botpress.cloud/20c18406-2457-49d9-a33e-a518622f23ed/webchat/bot.html"],
     credentials: true,
   })
 );
+
 
 // Routes Middleware
 app.use("/api/users", userRoute);
