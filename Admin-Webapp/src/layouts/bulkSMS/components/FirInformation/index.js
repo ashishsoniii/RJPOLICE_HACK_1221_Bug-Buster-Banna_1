@@ -5,16 +5,14 @@ import Card from "@mui/material/Card";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-
-// Billing page components
-import Bill from "layouts/billing/components/Fir";
+import BulkSMSForm from "./BulkSmsForm";
 
 function BillingInformation({ suggestionText }) {
   return (
     <Card id="delete-account">
       <MDBox pt={3} px={2}>
         <MDTypography variant="h6" fontWeight="medium">
-          Suggestion Recieved
+          Add New
         </MDTypography>
       </MDBox>
       <MDBox
@@ -24,9 +22,7 @@ function BillingInformation({ suggestionText }) {
         style={{ overflowY: "auto", maxHeight: "600px" }}
       >
         <MDBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {suggestionText.map((text, index) => (
-            <Bill key={index} name={text} />
-          ))}
+          <BulkSMSForm />
         </MDBox>
       </MDBox>
     </Card>

@@ -11,6 +11,7 @@ import SignUp from "layouts/authentication/sign-up";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Poll from "layouts/poll";
+import FirManager from "layouts/firManager";
 
 const routes = [
   {
@@ -52,6 +53,14 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/poll",
     component: <Poll />,
+  },
+  {
+    type: "collapse",
+    name: "FIR Manager",
+    key: "firr",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/firr",
+    component: <FirManager />,
   },
   // {
   //   type: "collapse",

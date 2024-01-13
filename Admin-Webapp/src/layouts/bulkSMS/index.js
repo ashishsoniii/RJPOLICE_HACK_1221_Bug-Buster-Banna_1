@@ -12,7 +12,7 @@ import Footer from "examples/Footer";
 import MasterCard from "examples/Cards/MasterCard";
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import BillingInformation from "layouts/billing/components/FirInformation";
+import BillingInformation from "layouts/bulkSMS/components/FirInformation";
 
 import { useState, useEffect } from "react";
 import BarChartShow2 from "./data/BarChartShow2";
@@ -223,6 +223,16 @@ function Billing() {
           </Grid>
         </MDBox>
 
+        <MDBox mb={3}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+
+{/* di */}
+
+              <BillingInformation suggestionText={suggestionText} />
+            </Grid>
+          </Grid>
+        </MDBox>
         <MDBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={7}>
