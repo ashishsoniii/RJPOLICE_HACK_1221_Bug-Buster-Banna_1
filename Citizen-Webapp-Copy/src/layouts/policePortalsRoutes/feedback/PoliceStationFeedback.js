@@ -56,7 +56,7 @@ function PoliceStationFeedback() {
 
     const handleSubmit = async () => {
         try {
-            const apiUrl = "http://localhost:5000/api/feedback/fillStationFeedback";
+            const apiUrl = "https://raj-police-backend-test.onrender.com/api/feedback/fillStationFeedback";
 
             //constructing object to be sent
             const feedbackData = {

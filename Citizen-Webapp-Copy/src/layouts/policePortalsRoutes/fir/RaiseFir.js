@@ -88,7 +88,7 @@ function RaiseFir() {
     // handling submit2 //createChatbotFeedback is definitely working CONFIRMED!
     const handleSubmit2 = async () => {
         try {
-            const apiUrl = "http://localhost:5000/api/chatbot/createChatbotFeedback";
+            const apiUrl = "https://raj-police-backend-test.onrender.com/api/chatbot/createChatbotFeedback";
 
             //constructing object to be sent
             const feedbackData = {
