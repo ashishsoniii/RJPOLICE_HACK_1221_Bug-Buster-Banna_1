@@ -44,7 +44,7 @@ app.use("/api/chatbot",chatbotRoutes);
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("instagram backend");
+  res.send("Raj Police backend");
 });
 
 // Error Middleware

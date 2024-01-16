@@ -153,6 +153,11 @@ export default function App() {
           isLoggedIn={isLoggedIn}
           setRoleAdmin={setRoleAdmin}
         />
+        <SignUp
+          setIsLoggedIn={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
+          setRoleAdmin={setRoleAdmin}
+        />
       </ThemeProvider>
     );
   }
@@ -169,7 +174,7 @@ export default function App() {
                 ? brandDark
                 : brandWhite
             }
-            brandName="Material Dashboard 2"
+            brandName="Raj Police"
             routes={routes}
             roleAdmin={roleAdmin}
             onMouseEnter={handleOnMouseEnter}

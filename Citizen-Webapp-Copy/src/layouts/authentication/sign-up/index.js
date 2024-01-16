@@ -1,20 +1,6 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// react-router-dom components
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -33,6 +19,40 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
 function Cover() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    gender: "",  // Added gender field
+    phoneNumber: "",  // Added phoneNumber field
+    // agreeTerms: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    // Add validation logic if needed
+
+    try {
+      console.log(formData)
+      const response = await axios.post("http://localhost:5000/api/users/register", formData);
+      alert("User registered successfully", response.data);
+
+      // Redirect to login or any other page if needed
+    } catch (error) {
+      console.error("Error registering user", error.message);
+      // Handle error and show an appropriate message to the user
+    }
+  };
+
   return (
     <CoverLayout image={bgImage}>
       <Card>
@@ -51,44 +71,76 @@ function Cover() {
             Join us today
           </MDTypography>
           <MDTypography display="block" variant="button" color="white" my={1}>
-            Enter your email and password to register
+            Enter your details to register
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" role="form" onSubmit={handleSignUp}>
             <MDBox mb={2}>
-              <MDInput type="text" label="Name" variant="standard" fullWidth />
+              <MDInput
+                type="text"
+                name="name"
+                label="Name"
+                variant="standard"
+                fullWidth
+                value={formData.name}
+                onChange={handleChange}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth />
+              <MDInput
+                type="email"
+                name="email"
+                label="Email"
+                variant="standard"
+                fullWidth
+                value={formData.email}
+                onChange={handleChange}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth />
+              <MDInput
+                type="password"
+                name="password"
+                label="Password"
+                variant="standard"
+                fullWidth
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </MDBox>
+            <MDBox mb={2}>
+              <MDInput
+                type="text"
+                name="gender"
+                label="Gender"
+                variant="standard"
+                fullWidth
+                value={formData.gender}
+                onChange={handleChange}
+              />
+            </MDBox>
+            <MDBox mb={2}>
+              <MDInput
+                type="text"
+                name="phoneNumber"
+                label="Phone Number"
+                variant="standard"
+                fullWidth
+                value={formData.phoneNumber}
+                onChange={handleChange}
+              />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
-              <Checkbox />
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;I agree the&nbsp;
-              </MDTypography>
-              <MDTypography
-                component="a"
-                href="#"
-                variant="button"
-                fontWeight="bold"
-                color="info"
-                textGradient
-              >
-                Terms and Conditions
-              </MDTypography>
+              <Checkbox
+                name="agreeTerms"
+                checked={formData.agreeTerms}
+                onChange={handleChange}
+              />
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
-                sign in
+              <MDButton type="submit" variant="gradient" color="info" fullWidth>
+                Sign Up
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
