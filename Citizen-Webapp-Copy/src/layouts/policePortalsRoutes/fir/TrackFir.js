@@ -7,7 +7,7 @@ function TrackFir() {
     // Fetch EFIR data when the component mounts
     const fetchFirData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/efir/allFir");
+        const response = await fetch("https://raj-police-backend-test.onrender.com/api/efir/allFir");
         const data = await response.json();
         setFirData(data);
       } catch (error) {
