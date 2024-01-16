@@ -192,7 +192,8 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       <MDBox p={2} mt="auto">
         <MDButton
           component="a"
-          // href="https://www.creative-tim.com/product/material-dashboard-pro-react"
+          href="https://mediafiles.botpress.cloud/20c18406-2457-49d9-a33e-a518622f23ed/webchat/bot.html"
+
           target="_blank"
           rel="noreferrer"
           variant="gradient"
