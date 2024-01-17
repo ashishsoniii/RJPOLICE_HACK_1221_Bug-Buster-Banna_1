@@ -74,7 +74,7 @@ function CaseSolvedFeedback() {
     const handleSubmit = async () => {
         try {
             // Your backend API endpoint for feedback submission
-            const apiUrl = "https://raj-police-backend-test.onrender.com/api/feedback/fillPostFirFeedback";
+            const apiUrl = "http://localhost:5000/api/feedback/fillPostFirFeedback";
 
             // Construct the feedback object to be sent
             const feedbackData = {

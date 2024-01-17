@@ -340,11 +340,11 @@ function RaiseFir() {
                         </Button>
                     </div>
 
-                    <div>
+                    {/*<div>
                         <Button variant="contained" onClick={handleSubmit2} style={{ color: 'white' }}>
                             Submit
                         </Button>
-                    </div>
+                        </div>*/}
                 </Box>
             </div>
         </div>
