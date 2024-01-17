@@ -1,19 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 // @mui material components
@@ -51,7 +35,7 @@ function Footer({ company, links }) {
       alignItems="center"
       px={1.5}
     >
-      <MDBox
+      {/* <MDBox
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -73,7 +57,7 @@ function Footer({ company, links }) {
           </MDTypography>
         </Link>
         for a better web.
-      </MDBox>
+      </MDBox> */}
       <MDBox
         component="ul"
         sx={({ breakpoints }) => ({
@@ -101,10 +85,10 @@ function Footer({ company, links }) {
 Footer.defaultProps = {
   company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Creative Tim" },
-    { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-    { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
+    { href: "https://www.police.rajasthan.gov.in/old/hackathon/", name: "Rajasthan Hackathon" },
+    { href: "https://www.police.rajasthan.gov.in/old/hackathon/", name: "About Us" },
+    { href: "https://www.police.rajasthan.gov.in/old/hackathon/", name: "Blog" },
+    { href: "https://www.police.rajasthan.gov.in/old/hackathon/", name: "License" },
   ],
 };
 
