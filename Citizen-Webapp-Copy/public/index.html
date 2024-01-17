@@ -24,7 +24,23 @@
   <div id="app"></div>
 
   <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-  <script src="https://mediafiles.botpress.cloud/20c18406-2457-49d9-a33e-a518622f23ed/webchat/config.js" defer></script>
+  <script>
+    window.botpressWebChat.init({
+      "composerPlaceholder": "Chat with bot",
+      "botConversationDescription": "Ask me anything",
+      "botId": "20c18406-2457-49d9-a33e-a518622f23ed",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "20c18406-2457-49d9-a33e-a518622f23ed",
+      "webhookId": "9087c3ab-2143-4e2a-9aff-ca5fd2e50311",
+      "lazySocket": true,
+      "themeName": "prism",
+      "frontendVersion": "v1",
+      "useSessionStorage": true,
+      "theme": "prism",
+      "themeColor": "#2563eb"
+    });
+  </script>
 </body>
 
 </html>
