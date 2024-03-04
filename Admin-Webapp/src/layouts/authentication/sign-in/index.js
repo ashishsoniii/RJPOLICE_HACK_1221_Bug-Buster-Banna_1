@@ -111,7 +111,7 @@ function Basic({ setIsLoggedIn, isLoggedIn }) {
                 Sign in
               </MDButton>
             </MDBox>
-            <MDBox mt={3} mb={1} textAlign="center">
+            {/* <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
                 Don&apos;t have an account?{" "}
                 <MDTypography
@@ -125,7 +125,7 @@ function Basic({ setIsLoggedIn, isLoggedIn }) {
                   Sign up
                 </MDTypography>
               </MDTypography>
-            </MDBox>
+            </MDBox> */}
             {error && (
               <MDTypography variant="caption" color="error" mt={1}>
                 {error}

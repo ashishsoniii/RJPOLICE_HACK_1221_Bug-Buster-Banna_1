@@ -169,13 +169,13 @@ export default function App() {
                 ? brandDark
                 : brandWhite
             }
-            brandName="Material Dashboard 2"
+            brandName="Raj Hack"
             routes={routes}
             roleAdmin={roleAdmin}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
           />
-          <Configurator />
+          {/* <Configurator /> */}
           {/* {configsButton} */}
         </>
       )}

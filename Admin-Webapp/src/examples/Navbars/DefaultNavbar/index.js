@@ -32,7 +32,8 @@ function DefaultNavbar({ transparent, light, action }) {
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
 
-  const openMobileNavbar = ({ currentTarget }) => setMobileNavbar(currentTarget.parentNode);
+  const openMobileNavbar = ({ currentTarget }) =>
+    setMobileNavbar(currentTarget.parentNode);
   const closeMobileNavbar = () => setMobileNavbar(false);
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function DefaultNavbar({ transparent, light, action }) {
       <MDBox
         py={1}
         px={{ xs: 4, sm: transparent ? 2 : 3, lg: transparent ? 0 : 2 }}
-        my={3}
+        my={1}
         mx={3}
         width="calc(100% - 48px)"
         borderRadius="lg"
@@ -94,11 +95,15 @@ function DefaultNavbar({ transparent, light, action }) {
           lineHeight={1}
           pl={{ xs: 0, lg: 1 }}
         >
-          <MDTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
+          <MDTypography
+            variant="button"
+            fontWeight="bold"
+            color={light ? "white" : "dark"}
+          >
             Super Admin Dashboard!
           </MDTypography>
         </MDBox>
-        <MDBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
+        {/* <MDBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
           <DefaultNavbarLink icon="donut_large" name="dashboard" route="/dashboard" light={light} />
           <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light} />
           <DefaultNavbarLink
@@ -113,8 +118,8 @@ function DefaultNavbar({ transparent, light, action }) {
             route="/authentication/sign-in"
             light={light}
           />
-        </MDBox>
-        {action &&
+        </MDBox> */}
+        {/* {action &&
           (action.type === "internal" ? (
             <MDBox display={{ xs: "none", lg: "inline-block" }}>
               <MDButton
@@ -142,8 +147,8 @@ function DefaultNavbar({ transparent, light, action }) {
                 {action.label}
               </MDButton>
             </MDBox>
-          ))}
-        <MDBox
+          ))} */}
+        {/* <MDBox
           display={{ xs: "inline-block", lg: "none" }}
           lineHeight={0}
           py={1.5}
@@ -153,9 +158,9 @@ function DefaultNavbar({ transparent, light, action }) {
           onClick={openMobileNavbar}
         >
           <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
-        </MDBox>
+        </MDBox> */}
       </MDBox>
-      {mobileView && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar} />}
+      {/* {mobileView && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar} />} */}
     </Container>
   );
 }
