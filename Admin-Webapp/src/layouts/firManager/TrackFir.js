@@ -37,7 +37,7 @@ function TrackFir() {
 
       // Trigger a PUT request to update the status on the server using Axios
       const response = await axios.put(
-        `http://localhost:5000/api/efir/updateStatus/${firNumber}`,
+        `https://raj-police-backend-test.onrender.com/api/efir/updateStatus/${firNumber}`,
         {
           status,
         }
@@ -103,7 +103,7 @@ function TrackFir() {
     const fetchFirData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/efir/allFirAdmin"
+          "https://raj-police-backend-test.onrender.com/api/efir/allFirAdmin"
         );
         const data = await response.json();
         setFirData(data);

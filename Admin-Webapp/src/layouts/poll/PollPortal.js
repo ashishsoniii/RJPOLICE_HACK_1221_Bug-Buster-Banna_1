@@ -33,7 +33,7 @@ function PollPortal() {
 
     // Make an HTTP POST request to submit the answer
     try {
-      await axios.post(`http://localhost:5000/api/poll/${accordionId}/submit`, {
+      await axios.post(`https://raj-police-backend-test.onrender.com/api/poll/${accordionId}/submit`, {
         answer: selectedOption,
       });
 
@@ -49,7 +49,7 @@ function PollPortal() {
     // Fetch all polls when the component mounts
     const fetchPolls = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/poll");
+        const response = await axios.get("https://raj-police-backend-test.onrender.com/api/poll");
         setAccordionData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -70,7 +70,7 @@ function PollPortal() {
 
     // Make an HTTP POST request to submit the answer
     try {
-      await axios.delete(`http://localhost:5000/api/poll/${accordionId}`, {
+      await axios.delete(`https://raj-police-backend-test.onrender.com/api/poll/${accordionId}`, {
         // answer: selectedOption,
       });
 
@@ -92,7 +92,7 @@ function PollPortal() {
 
     // Make an HTTP POST request to submit the answer
     try {
-      await axios.put(`http://localhost:5000/api/poll/${accordionId}/deactivate`, {
+      await axios.put(`https://raj-police-backend-test.onrender.com/api/poll/${accordionId}/deactivate`, {
         // answer: selectedOption,
       });
 

@@ -17,7 +17,7 @@ function BarChartShow2() {
   useEffect(() => {
     const fetchFeedbackData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/feedback/allFeedback"); // Replace with your actual API endpoint
+        const response = await axios.get("https://raj-police-backend-test.onrender.com/api/feedback/allFeedback"); // Replace with your actual API endpoint
         setFeedbackData(response.data);
       } catch (error) {
         console.error("Error fetching feedback data:", error);

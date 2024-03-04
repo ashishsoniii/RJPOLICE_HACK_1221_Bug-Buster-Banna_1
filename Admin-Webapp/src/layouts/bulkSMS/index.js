@@ -41,7 +41,7 @@ function Billing() {
     const fetchTotalEmailsSent = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/emails/totalEmailsSent"
+          "https://raj-police-backend-test.onrender.com/api/emails/totalEmailsSent"
         );
         setTotalEmailsSent(response.data.totalEmailsSent);
       } catch (error) {
@@ -56,7 +56,7 @@ function Billing() {
     const fetchFeedbackData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/feedback/allPostFirFeedback"
+          "https://raj-police-backend-test.onrender.com/api/feedback/allPostFirFeedback"
         ); // Replace with your actual API endpoint
         setFeedbackData(response.data);
         const suggestionsImprovements = response.data.map((feedback) => {
@@ -147,7 +147,7 @@ function Billing() {
     const fetchTotalFeedbacks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/feedback/totalFeedbacksCount"
+          "https://raj-police-backend-test.onrender.com/api/feedback/totalFeedbacksCount"
         );
         setTotalFeedbacks(response.data);
         console.log(response.data);

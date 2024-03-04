@@ -33,7 +33,7 @@ function RaiseFir() {
 
     const handleSubmit = async () => {
         try {
-            const apiUrl = "http://localhost:5000/api/efir/createEFIR";
+            const apiUrl = "https://raj-police-backend-test.onrender.com/api/efir/createEFIR";
 
             //constructing object to be sent
             const firData = {

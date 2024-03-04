@@ -32,7 +32,7 @@ export default function PollAdd() {
   };
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/poll", {
+      const response = await axios.post("https://raj-police-backend-test.onrender.com/api/poll", {
         question: question,
         options: options,
       });
